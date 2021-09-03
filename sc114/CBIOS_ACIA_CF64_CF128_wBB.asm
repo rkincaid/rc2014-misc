@@ -21,7 +21,7 @@
 ; If the above don't work, please perform an Internet search to see if I have
 ; updated the web page hosting service.
 ;
-; Adaptation to ACIA vs. SIO by Paul Wrightson
+; Iniital ACIA implementation provided by Paul Wrightson
 ; LST: implementation for for the SC114 bit-bang device by Robert Kincaid 2021
 ; Bit-bang code is copied from Steve Cousins' examples in his Small Computer 
 ; Workshop package

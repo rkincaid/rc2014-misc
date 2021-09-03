@@ -1,4 +1,7 @@
 ;==================================================================================
+; This code was kindly provided to me by Paul Wrightson and
+; is provided here for referece against my changes.
+;==================================================================================
 ; This is Grant Searle's code, modified for use with Small Computer Workshop IDE.
 ; Compile options added for LiNC80 and RC2014 systems to set correct addresses.
 ; Warning: This may not be the same as the 'official' BIOS for each retro system.
