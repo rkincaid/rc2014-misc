@@ -551,16 +551,19 @@ rtsB1:
             RET                 ; Char ready in A
 
 ;------------------------------------------------------------------------------------------------
-; Transmit byte  using SC114 bitbang interface
-;   On entry: A = Byte to be transmitted via bit-bang serial port
-;   On exit:  If character output successful (eg. device was ready)
-;               NZ flagged and A != 0
-;             BC DE HL IX IY I AF' BC' DE' HL' preserved
+; Use SC114 bitbang interface as the default list
+; unless redirected by iobyte to the ACIA
 list:       PUSH AF             ;Store character
-list2:      LD   A,(iobyte)     ;is iobyte pointing to LPT:
-            AND  $80
-            JR   Z, alist       ;if not then use the ACIA
-            LD   A,C            ;Get character to be output
+list2:      LD   A, (iobyte)     
+            AND  $C0
+            CP   $80
+            JR   Z, bblist
+            CP   $40
+            JR   NZ, conoutB1
+            JR   conoutA1
+;------------------------------------------------------------------------------------------------
+; SC114 bitbang interface
+bblist:     LD   A, C
 @Tx:        PUSH BC             ;Preserve BC
             LD   C, A           ;Store character to be transmitted
             XOR  A
@@ -580,16 +583,12 @@ list2:      LD   A,(iobyte)     ;is iobyte pointing to LPT:
             POP  BC             ;Restore BC
             POP  AF
             RET
-; the original ACIA routine
-alist:      LD A,(iobyte)
-            AND $C0
-            CP $40
-            JR NZ,conoutB1
-            JR conoutA1
 ;------------------------------------------------------------------------------------------------
 punch:      PUSH AF             ; Store character
             LD A,(iobyte)
-            AND $20
+            AND $30
+            CP $10
+            JR Z,bblist         ; We'll define PTP as bblist
             CP $20
             JR NZ,conoutB1
             JR conoutA1
@@ -1165,9 +1164,9 @@ popAndRun:
             CP $01
             JR Z,consoleAtB
 ; Tweak IOBYTE to default to sc114 bitbang interface - rkincaid
-            LD A,$81            ;(List is LPT:, Punch is TTY:, Reader is TTY:, Console is CRT:)
+            LD A,$91            ;(List is LPT:, Punch is LPT:, Reader is TTY:, Console is CRT:)
             JR setIOByte
-consoleAtB: LD A,$80            ;(List is LPT:, Punch is TTY:, Reader is TTY:, Console is TTY:)
+consoleAtB: LD A,$90            ;(List is LPT:, Punch is LPT:, Reader is TTY:, Console is TTY:)
 setIOByte:  LD (iobyte),A
 
             JP bios
