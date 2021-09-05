@@ -24,7 +24,7 @@ The files included here are as follow:
 the SC114's SCM monitor. Paste this at the "*" prompt and execute "G8000" to write the
 system tracks on your compact flash card.
 
-**printproxy.com** - The printer proxy. It requires python 2.7+, a system with an LPR command and a
+**printproxy.py** - The printer proxy. It requires python 2.7+, a system with an LPR command and a
 default printer set up on the system. It was tested on MacOS but should work on Linux and other unix-like systems. The program is pretty simple and should be easily modifiable for Windows.
 
 ### BUILDING
