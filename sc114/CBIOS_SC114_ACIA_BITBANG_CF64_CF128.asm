@@ -34,8 +34,8 @@
             .HEXBYTES 0x18      ;<SCC> SCWorkshop Intel Hex output format
 
 ; <JL> Select one of the two size options: 64MB or 128MB
-;#DEFINE    SIZE64
-#DEFINE     SIZE128
+#DEFINE    SIZE64
+;#DEFINE    SIZE128
 
 ccp         .EQU 0D000h         ; Base of CCP.
 bdos        .EQU ccp + 0806h    ; Base of BDOS.
@@ -1204,6 +1204,8 @@ serBLoAd:   .EQU serBTmp & $FF
 
 
             .END
+
+
 
 
 
