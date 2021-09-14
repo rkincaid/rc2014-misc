@@ -20,10 +20,10 @@ The files included here are as follow:
 
 **CBIOS_ACIA_CF64_CF128_pw.asm** - Paul's original code as provided to me (with an attribution added)
 
-**CBIOS_ACIA_CF64_CF128_wBB_.asm** - Modified CBIOS source to implement the bitbang versions of LPT: and PUN:. I tried to make the IOBYTE work correctly between the new output and the existing two ACIA ports in the code. I only have one ACIA port available (currently), so I am unable to test whether the second port works as it should. 
+**CBIOS_SC114_ACIA_BITBANG_CF64_CF128.asm** - Modified CBIOS source to implement the bitbang versions of LPT: and PUN:. I tried to make the IOBYTE work correctly between the new output and the existing two ACIA ports in the code. I only have one ACIA port available (currently), so I am unable to test whether the second port works as it should. 
 
-**PUTSYS-CPM-ACIA-BITBANGxx.hex** - A hex file suitible for loading the usual PUTSYS program into
-the SC114's SCM monitor. Paste this at the "\*" prompt and execute "G8000" to write the
+**PUTSYS-SC114-ACIA-BITBANG_CFxx.hex** - A hex file suitible for loading the usual PUTSYS program into
+the SC114's SCM monitor. Choose the value CFxx to match your CF card. Paste this at the "\*" prompt and execute "G8000" to write the
 system tracks on your compact flash card. xx denotes the CF card size (64MB vs 128MB). Caution, I have not test the 64MB as I only have 128MB at the moment. But it should work ok...
 
 **printproxy.py** - The printer proxy. It requires python 2.7+, a system with an LPR command and a
