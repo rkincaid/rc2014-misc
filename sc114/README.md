@@ -32,8 +32,8 @@ default printer set up on the system. It was tested on MacOS but should work on 
 ### BUILDING
 
 Building a new putsys is a two step process. Using Steve Cousins' Small Computer Workshop:
-1. load the CBIOS_ACIA_CF64_CF128_wBB_.asm, edit if necessary to match your CF capacity (64MB vs 128MB) and assemble it. You simply need to change the #DEFINE SIZE128 or SIZE64 at the beginning of the file. This will generate a file "IntelHexhex" in the SCW's Output directory. Copy this to the directory "...CPM v2.2 PutSys Plus/Includes" and rename it CBIOS_RC2014_ACIA_CFxx.HEX where xx is 64 or 128 as appropriate. 
-2. Then load "putsys.asm" into SCW and assemble this instead. The resulting "IntelHex.hex" file will now be your new putsys.hex. Simply load this into the SCM monitor and execute "G8000" to write it to your CF card. You should be able to immediately type "cpm" and start the system.
+1. Load the CBIOS_SC114_ACIA_BITBANG_CF64_CF128.asm, edit if necessary to match your CF capacity (64MB vs 128MB) and assemble it. You simply need to change the #DEFINE SIZE128 or SIZE64 at the beginning of the file. This will generate a file "Intel.hex" in the SCW's Output directory. Copy this to the directory "...CPM v2.2 PutSys Plus/Includes" and rename it CBIOS_RC2014_ACIA_CFxx.HEX where xx is 64 or 128 as appropriate.
+2.  Then load "PutSysPlus.asm" into SCW and assemble this instead. The new "Intel.hex" file will now be your new putsysplus. Simply paste this into the SCM monitor and execute "G8000" to write it to your CF card. You should be able to immediately type "cpm" and start the system.
 
 ### SETUP
 
