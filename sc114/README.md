@@ -1,6 +1,6 @@
 ### OVERVIEW
 
-This directory contains various files that might be useful to the owner of an SC114 Z80 SBC. **I make no guarantees it will work for you and consider it experimental and not thorougly tested**.
+This directory contains various files that might be useful to the owner of an SC114 Z80 SBC. **I make no guarantees it will work for you and consider it experimental and not thorougly tested**. Feel free to submit issues if you find any problems. I'll do my best to respond as I have time. The more testing the better!
 
 The initial collection of code is for SC114's that can run CP/M with an ACIA serial board as part
 of their setup. In my own case I have a very minimal system consisting of the SC114 and Rotten Snow's #61 Missing Module. The #61
