@@ -12,7 +12,7 @@ Based on ACIA CBIOS code kindly provided Paul Wrightson, I was able to create a 
 
 As proof-of-concept, I wrote a short proxy in Python to listen for output from the bitbang interface and forward it to a real printer (a Brother laster printer in my case). This enabled me to actually print directly from WordStar on the SC114 to the Brother printer (included formatted text!).
 
-**NOTE**: All of this works fine on my system with the SC113 and Rotten Snow's "Missing Module" board and a 128MB CF card. This is all I have to test with right now, so **proceed with caution**. I plan to get a second ACIA and SIO/2 boards soon to tinker with and test this setup. But that may take some time.
+**NOTE**: All of this works fine on my system with the SC114 and Rotten Snow's "Missing Module" board and a 128MB CF card. This is all I have to test with right now, so **proceed with caution**. I plan to get a second ACIA and SIO/2 boards soon to tinker with and test this setup. But that may take some time.
 
 ### THE FILES
 
@@ -24,10 +24,10 @@ The files included here are as follow:
 
 **PUTSYS-SC114-ACIA-BITBANG_CFxx.hex** - A hex file suitible for loading the usual PUTSYS program into
 the SC114's SCM monitor. Choose the value CFxx to match your CF card. Paste this at the "\*" prompt and execute "G8000" to write the
-system tracks on your compact flash card. xx denotes the CF card size (64MB vs 128MB). Caution, I have not test the 64MB as I only have 128MB at the moment. But it should work ok...
+system tracks on your compact flash card. xx denotes the CF card size (64MB vs 128MB). Caution, I have tested the 64MB and 128MB versions on the appropriate cards and it seems to work ok.
 
 **printproxy.py** - The printer proxy. It requires python 2.7+, a system with an LPR command and a
-default printer set up on the system. It was tested on MacOS but should work on Linux and other unix-like systems. The program is pretty simple and should be easily modifiable for Windows.
+default printer set up on the system. It was tested on MacOS but  other unix-like systems. The program is pretty simple and should be easily modifiable for Windows. Note that on my Raspberry Pi (as host) I needed to modify the code to use "lp" rather than "lpr". Make sure you enable CUPS and have set a appropriate default printer.
 
 ### BUILDING
 
@@ -42,9 +42,9 @@ You will now need two serial adapters. Presumably  you already have one (likely 
 With both terminals open, in the one connected to your CP/M console type:
 pip LPT:=test.txt
 where test.txt can be any text file you'd like to see transferred. You should also
-be able to pip to PRN: and LST: with the same effect.
+be able to pip to PUN: and LST: with the same effect.
 
-You can use stat to see the current assignments and also override my default IOBYTE settings. Note that I did my best to implement IOBYte appropriately, but I am unable to test it fully since the current CBIOS allows for a second ACIA port which I do not have. If you would prefer a different default setup, you can edit CBIOS_ACIA_CF64_CF128_wBB_.asm. The line that sets the default IOBYTE is near the very end of the file.
+You can use stat to see the current assignments and also override my default IOBYTE settings. Note that I did my best to implement IOBYTE appropriately, but I am unable to test it fully since the current CBIOS allows for a second ACIA port which I do not have. If you would prefer a different default setup, you can edit CBIOS_SC114_ACIA_BITBANG_CF64_CF128.asm. The line that sets the default IOBYTE is near the very end of the file.
 
 Note that the printproxy.py program passes the serial port unchanged to the default lpr printer on your unix-based system. Therefore, if you can configure wordstar for a compatible system on your network and/or host computer, you can print formatted text (i.e. bold, italic, various font sizes, etc.) I've been successful using the HP LaserJet driver to print to a compatible Brother laser printer.
 
