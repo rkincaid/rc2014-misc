@@ -35,7 +35,7 @@ Building a new putsys is a two step process. Using Steve Cousins' Small Computer
 1. Load the CBIOS_SC114_ACIA_BITBANG_CF64_CF128.asm, edit if necessary to match your CF capacity (64MB vs 128MB) and assemble it. You simply need to change the #DEFINE SIZE128 or SIZE64 at the beginning of the file. This will generate a file "Intel.hex" in the SCW's Output directory. Copy this to the directory "...CPM v2.2 PutSys Plus/Includes" and rename it CBIOS_RC2014_ACIA_CFxx.HEX where xx is 64 or 128 as appropriate.
 2.  Then load "PutSysPlus.asm" into SCW, edit the #define to specify your CF capacity and assemble. The new "Intel.hex" file will now be your new putsysplus. With an already formatted CF card, simply paste this into the SCM monitor and execute "G8000" to write it to your CF card. You should be able to immediately type "cpm" and start the system. If this is a new CF Card, follow the instructions at Steve Cousin's website for installing download.com and subsequent CP/M utilities.
 
-### SETUP
+### SETUP AND USAGE
 
 You will now need two serial adapters. Presumably  you already have one (likely TTL to USB) to operate your system, and attached to some ACIA card. You can now use a SECOND adapater to connect the bitbang port to your host computer. Open terminals to both USB devices as shown on your system. Make sure to get the baudrates correct. The bitbang can ONLY do 9600 baud.
 
@@ -44,6 +44,8 @@ pip LPT:=test.txt
 where test.txt can be any text file you'd like to see transferred. You should also
 be able to pip to PRN: and LST: with the same effect.
 
-You can use stat to see the current assignments and also override my default IOBYTE settings.
+You can use stat to see the current assignments and also override my default IOBYTE settings. Note that I did my best to implement IOBYte appropriately, but I am unable to test it fully since the current CBIOS allows for a second ACIA port which I do not have. If you would prefer a different default setup, you can edit CBIOS_ACIA_CF64_CF128_wBB_.asm. The line that sets the default IOBYTE is near the very end of the file.
 
-If you would prefer a different default setup, you can edit CBIOS_ACIA_CF64_CF128_wBB_.asm. The line that sets the default IOBYTE is near the very end of the file.
+Note that the printproxy.py program passes the serial port unchanged to the default lpr printer on your unix-based system. Therefore, if you can configure wordstar for a compatible system on your network and/or host computer, you can print formatted text (i.e. bold, italic, various font sizes, etc.) I've been successful using the HP LaserJet driver to print to a compatible Brother laser printer.
+
+Good luck! I hope you find this useful for your SC114.
