@@ -20,8 +20,7 @@ As proof-of-concept, I wrote a short proxy in Python to listen for output from t
 
 CLick the image below to watch a brief demo of my SC114 in ation:
 
-https://user-images.githubusercontent.com/7751235/133529723-c5ee6153-4aca-4f15-a613-744537078df2.mp4
-
+https://user-images.githubusercontent.com/7751235/133530997-b87b0f09-d8d6-4e2b-8371-cbf61df66647.mp4
 
 ### THE FILES
 
