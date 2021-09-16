@@ -10,7 +10,7 @@ interface to the console. So no other I/O is possible.
 
 Based on ACIA CBIOS code kindly provided to me by Paul Wrightson and Steve Cousins' bitbang code, I was able to create a modified CBIOS that implements the default CP/M LST: and PUN: devices using the built-in bitbang interface of the SC114. This should enable connection to various serial devices such as printers, a real paper tape punch (should you have one!) and any other unidirectional output device. Be aware however, that the current code is fixed at 9600 baud. If you are using some vintage gear on that port you may need to add additional delays to lower the baud rate to 300 or even 110 (say for a real Teletype). However, for routing LST: output to a host computer via USB it works fine at 9600 baud.
 
-As proof-of-concept, I wrote a short proxy in Python to listen for output from the bitbang interface and forward it to a real printer (a Brother laster printer in my case). This enabled me to actually print directly from WordStar on the SC114 to the Brother printer (included formatted text!).
+As proof-of-concept, I wrote a short proxy in Python to listen for output from the bitbang interface and forward it to a real printer (a Brother laser printer in my case). This enabled me to actually print directly from WordStar on the SC114 to the Brother printer (including formatted text!).
 
 **NOTE**: All of this works fine on my system with the SC114 and Rotten Snow's "Missing Module" board and a 128MB CF card. This is all I have to test with right now, so **proceed with caution**. I plan to get a second ACIA and SIO/2 boards soon to tinker with and test this setup. But that may take some time..
 
