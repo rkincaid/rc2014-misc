@@ -14,6 +14,13 @@ As proof-of-concept, I wrote a short proxy in Python to listen for output from t
 
 **NOTE**: All of this works fine on my system with the SC114 and Rotten Snow's "Missing Module" board and a 128MB CF card. This is all I have to test with right now, so **proceed with caution**. I plan to get a second ACIA and SIO/2 boards soon to tinker with and test this setup. But that may take some time.
 
+### DEMO
+
+CLick the image below to watch a brief demo of my SC114 in ation:
+
+https://user-images.githubusercontent.com/7751235/133529723-c5ee6153-4aca-4f15-a613-744537078df2.mp4
+
+
 ### THE FILES
 
 The files included here are as follow:
@@ -21,6 +28,8 @@ The files included here are as follow:
 **CBIOS_ACIA_CF64_CF128_pw.asm** - Paul's original code as provided to me (with an attribution added)
 
 **CBIOS_SC114_ACIA_BITBANG_CF64_CF128.asm** - Modified CBIOS source to implement the bitbang versions of LPT: and PUN:. I tried to make the IOBYTE work correctly between the new output and the existing two ACIA ports in the code. I only have one ACIA port available (currently), so I am unable to test whether the second port works as it should. 
+
+
 
 **PUTSYS-SC114-ACIA-BITBANG_CFxx.hex** - A hex file suitible for loading the usual PUTSYS program into
 the SC114's SCM monitor. Choose the value CFxx to match your CF card. Paste this at the "\*" prompt and execute "G8000" to write the
@@ -49,3 +58,4 @@ You can use stat to see the current assignments and also override my default IOB
 Note that the printproxy.py program passes the serial port unchanged to the default lpr printer on your unix-based system. Therefore, if you can configure wordstar for a compatible system on your network and/or host computer, you can print formatted text (i.e. bold, italic, various font sizes, etc.) I've been successful using the HP LaserJet driver to print to a compatible Brother laser printer.
 
 Good luck! I hope you find this useful for your SC114.
+
