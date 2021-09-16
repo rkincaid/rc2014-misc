@@ -12,7 +12,9 @@ Based on ACIA CBIOS code kindly provided to me by Paul Wrightson and Steve Cousi
 
 As proof-of-concept, I wrote a short proxy in Python to listen for output from the bitbang interface and forward it to a real printer (a Brother laster printer in my case). This enabled me to actually print directly from WordStar on the SC114 to the Brother printer (included formatted text!).
 
-**NOTE**: All of this works fine on my system with the SC114 and Rotten Snow's "Missing Module" board and a 128MB CF card. This is all I have to test with right now, so **proceed with caution**. I plan to get a second ACIA and SIO/2 boards soon to tinker with and test this setup. But that may take some time.
+**NOTE**: All of this works fine on my system with the SC114 and Rotten Snow's "Missing Module" board and a 128MB CF card. This is all I have to test with right now, so **proceed with caution**. I plan to get a second ACIA and SIO/2 boards soon to tinker with and test this setup. But that may take some time..
+
+**ALSO**: In order to free up enough space to add the addtional code I needed to condense the original attribution/copyright boot message. I think it still conveys essentially the same meaning as before and hopefully nobody will object.
 
 ### DEMO
 
