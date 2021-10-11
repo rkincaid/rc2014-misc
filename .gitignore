@@ -1,2 +1,4 @@
 .DS_Store
 sc114/CBIOS_ACIA_CF64_CF128_wBB_old.asm
+sc114/PutSysPlus.asm
+sc114/CBIOS_SC114_ACIA_BITBANG_CF64_only.asm

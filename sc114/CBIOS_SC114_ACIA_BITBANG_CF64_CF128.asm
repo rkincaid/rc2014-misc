@@ -63,10 +63,16 @@ RTS_HIGH    .EQU     0D6H
 RTS_LOW     .EQU     096H
 
 ; ACIA i/o h/w
+; NOTE: The usual defalult for ACIA1 if $40 but the Rotten Snow
+; boards don't provide this, so I use $90 instead which is available
+; via jumpers. Make sure you use the appropriate port values for
+; your board
 ACIA0_D     .EQU $81
 ACIA0_C     .EQU $80
-ACIA1_D     .EQU $41
+ACIA1_D     .EQU $41  ;SCM default for 2nd ACIA
 ACIA1_C     .EQU $40
+;ACIA1_D     .EQU $91 ;Rotten Snow 2nd ACIA
+;ACIA1_C     .EQU $90
 
 ;<PDW> mode 1 interrupt support
 int38       .EQU 38H
@@ -586,9 +592,7 @@ bblist:     LD   A, C
 ;------------------------------------------------------------------------------------------------
 punch:      PUSH AF             ; Store character
             LD A,(iobyte)
-            AND $30
-            CP $10
-            JR Z,bblist         ; We'll define PTP as bblist
+            AND $20
             CP $20
             JR NZ,conoutB1
             JR conoutA1
@@ -1164,9 +1168,9 @@ popAndRun:
             CP $01
             JR Z,consoleAtB
 ; Tweak IOBYTE to default to sc114 bitbang interface - rkincaid
-            LD A,$91            ;(List is LPT:, Punch is LPT:, Reader is TTY:, Console is CRT:)
+            LD A,$81            ;(List is LPT:, Punch is TTY:, Reader is TTY:, Console is CRT:)
             JR setIOByte
-consoleAtB: LD A,$90            ;(List is LPT:, Punch is LPT:, Reader is TTY:, Console is TTY:)
+consoleAtB: LD A,$80            ;(List is LPT:, Punch is TTY:, Reader is TTY:, Console is TTY:)
 setIOByte:  LD (iobyte),A
 
             JP bios
